@@ -1,0 +1,22 @@
+{
+  "name": "hangman-node-js",
+  "version": "1.0.0",
+  "description": "A node js application for command line game hangman",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manudee/hangman-node-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manudee/hangman-node-js/issues"
+  },
+  "homepage": "https://github.com/manudee/hangman-node-js#readme",
+  "dependencies": {
+    "inquirer": "^3.3.0"
+  }
+}
