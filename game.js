@@ -39,7 +39,7 @@ var letter = function(userGuessed,numberOfGuessesRemaining, computerPicked,ltrth
 			if(!(this.letterAlreadyGuessed .includes(this.userGuessed))){
 				this.letterAlreadyGuessed.push(userGuessed); 
 				this.numberOfGuessesRemaining--;
-			
+
 			}
 		}
 		console.log(currentWord);
@@ -61,25 +61,39 @@ currentWord = wordToGuess.replaceWord();
 console.log("word is " + wordToGuess.word.join(""));
 console.log("Computer Picked " + wordGenerator.computerPicked);
 
-function wordChecker(){
-	if(numberOfGuessesRemaining!=0 || ((currentWord.join("")) != wordGenerator.computerPicked)){
-		inquirer.prompt([  {
-			name: "letter",
-			message: "Please guess the letter?"
-		}]).then(function(answers){
 
-			var ltrthere = wordGenerator.computerPicked.includes(answers.letter);
-			console.log("ltrthere " + ltrthere);
 
-			var game = new letter(answers.letter,numberOfGuessesRemaining,wordGenerator.computerPicked,ltrthere);
-			game.display();
-			game.updateWord();
 
-  	wordChecker();
-  	console.log("Number numberOfGuessesRemaining " + numberOfGuessesRemaining);
-  });
+function createWord(){
+
+	inquirer.prompt([  {
+		name: "letter",
+		message: "Please guess the letter?"
+	}]).then(function(answers){
+
 	}
-	else if(numberOfGuessesRemaining=0 || ((currentWord.join("")) = wordGenerator.computerPicked)){
+})
+
+
+	function wordChecker(){
+		if(numberOfGuessesRemaining!=0 || ((currentWord.join("")) != wordGenerator.computerPicked)){
+			inquirer.prompt([  {
+				name: "letter",
+				message: "Please guess the letter?"
+			}]).then(function(answers){
+
+				var ltrthere = wordGenerator.computerPicked.includes(answers.letter);
+				console.log("ltrthere " + ltrthere);
+
+				var game = new letter(answers.letter,numberOfGuessesRemaining,wordGenerator.computerPicked,ltrthere);
+				game.display();
+				game.updateWord();
+
+				wordChecker();
+				console.log("Number numberOfGuessesRemaining " + numberOfGuessesRemaining);
+			});
+		}
+		else if(numberOfGuessesRemaining=0 || ((currentWord.join("")) = wordGenerator.computerPicked)){
 //placeholder for reset
 }
 else{
