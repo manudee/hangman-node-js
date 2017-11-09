@@ -7,14 +7,13 @@ var losses= 0;
 var wins = 0;
 var userGuessed;
 var currentWord = [];
+var computerPicked;
 
 var letter = function(userGuessed,computerPicked){
-	this.wins = wins;
-	this.losses = losses;
-	// this.letterAlreadyGuessed = letterAlreadyGuessed;
+
+
 
 	this.userGuessed = userGuessed;
-	// this.numberOfGuessesRemaining = 10;
 
 
 
@@ -24,28 +23,18 @@ var letter = function(userGuessed,computerPicked){
 
 		console.log("This letter " + this.userGuessed);
 		console.log("Word " + this.computerPicked);
-		// console.log("boolean ltrthere " + this.ltrthere);
-		// console.log("guesses remaining " + this.numberOfGuessesRemaining);
+
 	};
 
 	this.updateWord = function(){
-	
-			for (var i = 0; i < this.computerPicked.length; i++) {
-				if(this.computerPicked[i] === this.userGuessed )
-					currentWord[i] = currentWord[i].replace("_",this.userGuessed) ;
-			}
-		// }
 
-		// else {
-		// 	if(!(this.letterAlreadyGuessed .includes(this.userGuessed))){
-		// 		this.letterAlreadyGuessed.push(userGuessed); 
-		// 		this.numberOfGuessesRemaining--;
+		for (var i = 0; i < this.computerPicked.length; i++) {
+			if(this.computerPicked[i] === this.userGuessed )
+				currentWord[i] = currentWord[i].replace("_",this.userGuessed) ;
+		}
 
-		// 	}
-		// }
 		console.log(currentWord);
-		// console.log(letterAlreadyGuessed);
-		// console.log(numberOfGuessesRemaining);
+
 
 	}
 
@@ -54,13 +43,13 @@ var letter = function(userGuessed,computerPicked){
 
 }
 
-
 var wordToGuess = new word(wordGenerator.computerPicked);
 wordToGuess.displayWord();
 currentWord = wordToGuess.replaceWord();
 
 console.log("word is " + wordToGuess.word.join(""));
 console.log("Computer Picked " + wordGenerator.computerPicked);
+
 
 function wordChecker(){
 	if(numberOfGuessesRemaining!=0 || ((currentWord.join("")) != wordGenerator.computerPicked)){
@@ -80,25 +69,45 @@ function wordChecker(){
 
 			}
 
-			else{ //if(!(letterAlreadyGuessed.includes(userGuessed))){
+			else{ 
 				console.log("I AM HERE IN ELSE");
 				letterAlreadyGuessed.push(userGuessed); 
 				numberOfGuessesRemaining--;
 				
 			}
 
+			if(numberOfGuessesRemaining === 0 ){
 
-			wordChecker();
-			console.log("Number numberOfGuessesRemaining " + numberOfGuessesRemaining);
-		});
+				losses++;
+				console.log("You lost");
+				console.log("Losses " + losses);
+				return;
+				// startGame();
+				// reset();
+			}
+
+			else if ((currentWord.join("")) === wordGenerator.computerPicked) {
+
+				wins++;
+				console.log("You win!");
+				console.log("Wins " + wins);
+				return;
+				// startGame();
+
+       		// reset();
+
+
+       	}
+
+       	wordChecker();
+       	console.log("Number numberOfGuessesRemaining " + numberOfGuessesRemaining);
+
+
+       });
 	}
-	else if(numberOfGuessesRemaining===0 || ((currentWord.join("")) === wordGenerator.computerPicked)){
-//placeholder for reset
-	console.log("You guessed the word correctly!");
-}
-else{
-	letterAlreadyGuessed.push();
-}
+
+
+
 }
 
 wordChecker();

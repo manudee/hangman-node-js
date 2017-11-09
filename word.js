@@ -1,4 +1,3 @@
-
 var wordGenerator  = require('./wordGenerator.js');
 
 var word = function(word){
@@ -34,10 +33,5 @@ var word = function(word){
 
 
 
-// var word1 = new word(wordGenerator.computerPicked);
-
-
-// word1.displayWord();
-// word1.replaceWord();
 
 module.exports = word;
