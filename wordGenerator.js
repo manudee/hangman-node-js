@@ -3,10 +3,6 @@ var computerChoice = ['Asia','Australia','AMERICA','Antarctica','Africa','Europe
 
 
 
-var computerPicked = computerChoice[Math.floor(Math.random() * computerChoice.length)].toLowerCase();
-
-
-
 module.exports = {
-	computerPicked: computerPicked
+	computerChoice: computerChoice
 };

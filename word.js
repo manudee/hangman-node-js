@@ -9,19 +9,19 @@ var word = function(word){
 
 
 	this.displayWord = function(){
-		console.log(this.word);
+		// console.log(this.word);
 
 
 	};
 	
 
 	this.replaceWord = function(){
-		console.log(typeof(this.word));
-		console.log(this.word);
-		console.log(this.word.length);
+		// console.log(typeof(this.word));
+		// console.log(this.word);
+		// console.log(this.word.length);
 		var currentWord = [];
 		for (var i = 0; i < this.word.length; i++) {
-			console.log(this.word[i]);
+			// console.log(this.word[i]);
 			currentWord[i] = "_";
 
 		}
